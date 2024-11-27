@@ -88,6 +88,12 @@ if data_files:
                             options=df.columns.tolist(),  # Use column names from the dataframe
                             help="Select the response variable for analysis"
                         )
+                    
+                        model_type = st.selectbox(
+                            "Model Type",
+                            options=["Carryover", "Adstock", "Hill Adstock"],
+                            help="Select the type of model for media mix analysis"
+                        )
 
                         # Submit button for the form
                         submit_button = st.form_submit_button(label="Run Model")
