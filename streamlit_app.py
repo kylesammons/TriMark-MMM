@@ -47,7 +47,7 @@ with st.sidebar:
                 f.write(data_file.getvalue())
                 temp_file_name = f.name
             if temp_file_name:
-                st.markdown(f"Adding {file_name} to knowledge base...")
+                st.markdown(f"Adding {file_name} to model...")
                 # Example processing logic for CSV and XLSX
                 if file_name.endswith(".csv"):
                     df = pd.read_csv(temp_file_name)
