@@ -2,6 +2,11 @@ import os
 import pandas as pd
 import streamlit as st
 import tempfile
+from lightweight_mmm import lightweight_mmm
+from lightweight_mmm import optimize_media
+from lightweight_mmm import plot
+from lightweight_mmm import preprocessing
+from lightweight_mmm import utils
 
 # Set Streamlit page config
 st.set_page_config(page_title="TriMark MMM", page_icon=":male_mage:")
