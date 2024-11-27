@@ -10,12 +10,19 @@ st.set_page_config(page_title="TriMark MMM", page_icon=":male_mage:")
 st.title(":male_mage: TriMark MMM")
 
 with st.sidebar:
-    # Timeframe selector
-    timeframe = st.date_input(
-        "Select Timeframe",
-        help="Choose a date range for the analysis (start and end dates)",
+    st.title("Select Timeframe")
+    # Start Date Timeframe selector
+    startdate = st.date_input(
+        "Select Start Date",
+        help="Choose a start date for the date range that you want media mix predictions/recommendations for",
     )
-    
+
+    # End Date Timeframe selector
+    enddate = st.date_input(
+        "Select End Date",
+        help="Choose an end date for the date range that you want media mix predictions/recommendations for",
+    )
+
     # Budget input
     budget = st.text_input("Selected Timeframe Budget")
     "Enter budget (e.g., 200000)"
