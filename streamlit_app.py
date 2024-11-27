@@ -1,7 +1,7 @@
-!pip install --upgrade git+https://github.com/google/lightweight_mmm.git
-!pip uninstall -y matplotlib
-!pip install numpyro
-!pip install matplotlib==3.1.3
+pip install --upgrade git+https://github.com/google/lightweight_mmm.git
+pip uninstall -y matplotlib
+pip install numpyro
+pip install matplotlib==3.1.3
 
 import os
 import pandas as pd
