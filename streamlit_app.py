@@ -20,7 +20,7 @@ with st.sidebar:
             continue
         try:
             if not st.session_state.api_key:
-                st.error("Please enter your OpenAI API Key")
+                st.error("Please enter your Budget")
                 st.stop()
             temp_file_name = None
             with tempfile.NamedTemporaryFile(mode="wb", delete=False, prefix=file_name, suffix=".pdf") as f:
@@ -32,8 +32,8 @@ with st.sidebar:
                 st.markdown("")
                 add_pdf_files.append(file_name)
                 os.remove(temp_file_name)
-            st.session_state.messages.append({"role": "assistant", "content": f"Added {file_name} to knowledge base!"})
+            st.session_state.messages.append({"role": "assistant", "content": f"Added {file_name} to model!"})
         except Exception as e:
-            st.error(f"Error adding {file_name} to knowledge base: {e}")
+            st.error(f"Error adding {file_name} to model: {e}")
             st.stop()
     st.session_state["add_pdf_files"] = add_pdf_files
