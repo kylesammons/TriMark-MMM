@@ -9,8 +9,7 @@ st.set_page_config(page_title="The Reef", page_icon=":male_mage:")
 st.title(":male_mage: TriMark MMM")
 
 with st.sidebar:
-    budget = st.text_input("Selected Timeframe Budget")
-    "Input expected Budget for selected Timeframe"
+    budget = st.text_input("Selected Timeframe Budget", placeholder="Enter budget (e.g., 10000))
 
     if st.session_state.api_key:
         app = get_ec_app(st.session_state.api_key)
