@@ -93,8 +93,6 @@ if data_files:
                 else:
                     st.error("No columns found in the uploaded file.")
                     st.stop()
-
-                submitted = st.form_submit_button("Submit")
                 
         except Exception as e:
             st.error(f"Error adding `{file_name}` to model: {e}")
