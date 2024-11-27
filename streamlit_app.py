@@ -76,20 +76,27 @@ if data_files:
                 # Mark the file as processed
                 st.session_state["add_data_files"].append(file_name)
 
-                # Ensure that columns are available before creating the selectbox
+                # Ensure that columns are available before creating the form
                 if df.columns.size > 0:
                     # Display success message first
                     st.success(f"Added `{file_name}` to model!")
 
-                    # Add a selectbox for Response Variable based on dataframe columns
-                    response_var = st.selectbox(
-                        "Response Variable",
-                        options=df.columns.tolist(),  # Use column names from the dataframe
-                        help="Select the response variable for analysis"
-                    )
+                    # Create a form for the Response Variable selection
+                    with st.form(key="response_var_form"):
+                        response_var = st.selectbox(
+                            "Response Variable",
+                            options=df.columns.tolist(),  # Use column names from the dataframe
+                            help="Select the response variable for analysis"
+                        )
 
-                    # Store the selected response variable in session state
-                    st.session_state["response_variable"] = response_var
+                        # Submit button for the form
+                        submit_button = st.form_submit_button(label="Run")
+
+                    # Store the selected response variable if the form is submitted
+                    if submit_button:
+                        st.session_state["response_variable"] = response_var
+                        st.success(f"Response variable `{response_var}` selected!")
+
                 else:
                     st.error("No columns found in the uploaded file.")
                     st.stop()
