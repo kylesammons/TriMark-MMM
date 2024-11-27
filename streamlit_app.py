@@ -90,7 +90,7 @@ if data_files:
                         )
 
                         # Submit button for the form
-                        submit_button = st.form_submit_button(label="Run")
+                        submit_button = st.form_submit_button(label="Run Model")
 
                     # Store the selected response variable if the form is submitted
                     if submit_button:
