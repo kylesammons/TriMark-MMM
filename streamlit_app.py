@@ -66,7 +66,7 @@ if data_files:
                     df = pd.read_excel(temp_file_name)
                 
                 # Show the first few rows of the uploaded file
-                st.write(df.head())
+                st.dataframe(df.head(50), height=400)
                 st.session_state["add_data_files"].append(file_name)
                 os.remove(temp_file_name)
                 
