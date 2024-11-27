@@ -1,6 +1,9 @@
+import os
+import pandas as pd
 import streamlit as st
 
-st.title("🎈 My new app")
-st.write(
-    "Let's start building! For help and inspiration, head over to [docs.streamlit.io](https://docs.streamlit.io/)."
-)
+# Set Streamlit page config
+st.set_page_config(page_title="The Reef", page_icon=":male_mage::skin-tone-4:")
+
+# App title
+st.title(":male_mage::skin-tone-4: The Reef")
