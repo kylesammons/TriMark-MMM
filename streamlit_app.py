@@ -2,8 +2,6 @@ import os
 import pandas as pd
 import streamlit as st
 import tempfile
-import jax.numpy as jnp
-import numpyro
 
 # Set Streamlit page config
 st.set_page_config(page_title="TriMark MMM", page_icon=":male_mage:")
