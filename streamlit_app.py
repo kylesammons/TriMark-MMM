@@ -78,8 +78,8 @@ if data_files:
 
 # Check if dataframe is empty
 if df.empty:
-st.error("Uploaded file is empty. Please upload a valid file.")
-st.stop()
+    st.error("Uploaded file is empty. Please upload a valid file.")
+    st.stop()
 
 # Add a selectbox for Response Variable based on dataframe columns
 response_var = st.selectbox("Response Variable",options=df.columns.tolist(), help="Select the response variable for analysis")
