@@ -58,22 +58,42 @@ if data_files:
                 temp_file_name = f.name
             
             if temp_file_name:
-                st.markdown(f"### Processing {file_name}")
+                st.markdown(f"### Processing `{file_name}`")
                 # Example processing logic for CSV and XLSX
                 if file_name.endswith(".csv"):
                     df = pd.read_csv(temp_file_name)
                 elif file_name.endswith(".xlsx"):
                     df = pd.read_excel(temp_file_name)
                 
+                # Check if dataframe is empty
+                if df.empty:
+                    st.error("Uploaded file is empty. Please upload a valid file.")
+                    st.stop()
+
                 # Show the first few rows of the uploaded file
                 st.dataframe(df.head(50), height=400)
+
+                # Ensure that columns are available before creating the selectbox
+                if df.columns.size > 0:
+                    # Add a selectbox for Response Variable based on dataframe columns
+                    response_var = st.selectbox(
+                        "Response Variable",
+                        options=df.columns.tolist(),  # Use column names from the dataframe
+                        help="Select the response variable for analysis"
+                    )
+
+                    # Store the selected response variable in session state
+                    st.session_state["response_variable"] = response_var
+                else:
+                    st.error("No columns found in the uploaded file.")
+                    st.stop()
+                
+                # Mark the file as processed
                 st.session_state["add_data_files"].append(file_name)
                 os.remove(temp_file_name)
                 
                 # Display success message
-                st.success(f"Added {file_name} to model!")
+                st.success(f"Added `{file_name}` to model!")
         except Exception as e:
-            st.error(f"Error adding {file_name} to model: {e}")
+            st.error(f"Error adding `{file_name}` to model: {e}")
             st.stop()
-
-
