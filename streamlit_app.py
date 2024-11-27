@@ -73,6 +73,16 @@ if data_files:
                 # Show the first few rows of the uploaded file
                 st.dataframe(df.head(50), height=400)
 
+                # Mark the file as processed
+                st.session_state["add_data_files"].append(file_name)
+                os.remove(temp_file_name)
+                
+                # Display success message
+                st.success(f"Added `{file_name}` to model!")
+        except Exception as e:
+            st.error(f"Error adding `{file_name}` to model: {e}")
+            st.stop()
+
                 # Ensure that columns are available before creating the selectbox
                 if df.columns.size > 0:
                     # Add a selectbox for Response Variable based on dataframe columns
