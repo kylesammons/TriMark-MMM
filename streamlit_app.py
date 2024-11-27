@@ -13,20 +13,23 @@ with st.sidebar:
     st.title("Select Timeframe")
     # Start Date Timeframe selector
     startdate = st.date_input(
-        "Select Start Date",
+        "Start Date",
         help="Choose a start date for the date range that you want media mix predictions/recommendations for",
     )
 
     # End Date Timeframe selector
     enddate = st.date_input(
-        "Select End Date",
+        "End Date",
         help="Choose an end date for the date range that you want media mix predictions/recommendations for",
     )
 
+    
+    st.title("Input Budget")
     # Budget input
-    budget = st.text_input("Selected Timeframe Budget")
+    budget = st.text_input("Total Budget")
     "Enter budget (e.g., 200000)"
-
+    
+    st.title("Load Data")
     # File uploader for CSV and XLSX
     data_files = st.file_uploader("Upload your data files", accept_multiple_files=True, type=["csv", "xlsx"])
     add_data_files = st.session_state.get("add_data_files", [])
