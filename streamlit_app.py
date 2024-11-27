@@ -67,15 +67,25 @@ if data_files:
                 
                 # Show the first few rows of the uploaded file
                 st.dataframe(df.head(50), height=400)
-                st.session_state["add_data_files"].append(file_name)
-                os.remove(temp_file_name)
-                
+
                 # Display success message
                 st.success(f"Added `{file_name}` to model!")
         except Exception as e:
             st.error(f"Error adding `{file_name}` to model: {e}")
             st.stop()
-            
-# Add a selectbox for Response Variable based on dataframe columns
-response_var = st.selectbox("Response Variable", options=df.columns.tolist(),  # Use column names from the dataframe
-        help="Select the response variable for analysis")
+                
+                # Add a selectbox for Response Variable based on dataframe columns
+                response_var = st.selectbox(
+                    "Response Variable",
+                    options=df.columns.tolist(),  # Use column names from the dataframe
+                    help="Select the response variable for analysis"
+                )
+                
+                # Store the selected response variable in session state
+                st.session_state["response_variable"] = response_var
+                
+                # Mark the file as processed
+                st.session_state["add_data_files"].append(file_name)
+                os.remove(temp_file_name)
+                
+                
