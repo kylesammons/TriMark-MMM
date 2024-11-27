@@ -75,3 +75,7 @@ if data_files:
         except Exception as e:
             st.error(f"Error adding `{file_name}` to model: {e}")
             st.stop()
+            
+# Add a selectbox for Response Variable based on dataframe columns
+response_var = st.selectbox("Response Variable", options=df.columns.tolist(),  # Use column names from the dataframe
+        help="Select the response variable for analysis")
