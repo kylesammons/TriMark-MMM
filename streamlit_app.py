@@ -26,7 +26,8 @@ with st.sidebar:
     
     st.title("Input Budget")
     # Budget input
-    budget = st.text_input("Total Budget")
+    budget = st.text_input("Total Budget",
+        help="Input total planned budget for all channels included in your data file for the selected time frame",)
     "Enter budget (e.g., 200000)"
     
     st.title("Load Data")
