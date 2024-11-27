@@ -9,9 +9,8 @@ st.set_page_config(page_title="The Reef", page_icon=":male_mage:")
 st.title(":male_mage: TriMark MMM")
 
 with st.sidebar:
-    openai_access_token = st.text_input("OpenAI API Key", key="api_key", type="password")
-    "WE DO NOT STORE YOUR OPENAI KEY."
-    "Just paste your OpenAI API key here and we'll use it to power the chatbot. [Get your OpenAI API key](https://platform.openai.com/api-keys)"  # noqa: E501
+    budget = st.text_input("Selected Timeframe Budget")
+    "Input expected Budget for selected Timeframe"
 
     if st.session_state.api_key:
         app = get_ec_app(st.session_state.api_key)
