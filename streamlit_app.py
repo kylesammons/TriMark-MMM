@@ -7,11 +7,10 @@ st.set_page_config(page_title="The Reef", page_icon=":male_mage:")
 
 # App title
 st.title(":male_mage: TriMark MMM")
-"
 
 with st.sidebar:
     budget = st.text_input("Selected Timeframe Budget")
-    ""Enter budget (e.g., 200000)"
+    "Enter budget (e.g., 200000)"
 
     pdf_files = st.file_uploader("Upload your PDF files", accept_multiple_files=True, type="pdf")
     add_pdf_files = st.session_state.get("add_pdf_files", [])
