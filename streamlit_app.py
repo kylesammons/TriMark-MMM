@@ -1,5 +1,3 @@
-I'd like to add a selectbox dropdown that shows all of the headers that can selected based off the file that is added. The selectbox should say Response Variable and should be under the dataframe in the main area
-
 import os
 import pandas as pd
 import streamlit as st
