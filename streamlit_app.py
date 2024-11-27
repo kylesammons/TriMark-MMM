@@ -37,13 +37,9 @@ with st.sidebar:
         "Upload your data files", accept_multiple_files=True, type=["csv", "xlsx"]
     )
 
-# Initialize session state for tracking files and data
+# Initialize session state for tracking files
 if "add_data_files" not in st.session_state:
     st.session_state["add_data_files"] = []
-if "df" not in st.session_state:
-    st.session_state["df"] = None
-if "response_variable" not in st.session_state:
-    st.session_state["response_variable"] = None
 
 # Display results in the main area
 if data_files:
@@ -69,9 +65,6 @@ if data_files:
                 elif file_name.endswith(".xlsx"):
                     df = pd.read_excel(temp_file_name)
                 
-                # Store dataframe in session state
-                st.session_state["df"] = df
-
                 # Check if dataframe is empty
                 if df.empty:
                     st.error("Uploaded file is empty. Please upload a valid file.")
@@ -80,16 +73,21 @@ if data_files:
                 # Show the first few rows of the uploaded file
                 st.dataframe(df.head(50), height=400)
 
-                # Add a selectbox for Response Variable based on dataframe columns
-                response_var = st.selectbox(
-                    "Response Variable",
-                    options=df.columns.tolist(),  # Use column names from the dataframe
-                    help="Select the response variable for analysis"
-                )
+                # Ensure that columns are available before creating the selectbox
+                if df.columns.size > 0:
+                    # Add a selectbox for Response Variable based on dataframe columns
+                    response_var = st.selectbox(
+                        "Response Variable",
+                        options=df.columns.tolist(),  # Use column names from the dataframe
+                        help="Select the response variable for analysis"
+                    )
 
-                # Store the selected response variable in session state
-                st.session_state["response_variable"] = response_var
-
+                    # Store the selected response variable in session state
+                    st.session_state["response_variable"] = response_var
+                else:
+                    st.error("No columns found in the uploaded file.")
+                    st.stop()
+                
                 # Mark the file as processed
                 st.session_state["add_data_files"].append(file_name)
                 os.remove(temp_file_name)
@@ -99,11 +97,3 @@ if data_files:
         except Exception as e:
             st.error(f"Error adding `{file_name}` to model: {e}")
             st.stop()
-
-# If the dataframe is in session state, re-display it
-if st.session_state["df"] is not None:
-    st.dataframe(st.session_state["df"].head(50), height=400)
-
-# If a response variable is selected, show it in the main area
-if st.session_state["response_variable"] is not None:
-    st.markdown(f"### Selected Response Variable: `{st.session_state['response_variable']}`")
