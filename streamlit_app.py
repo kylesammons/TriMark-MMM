@@ -77,8 +77,4 @@ if data_files:
             st.stop()
 
 # Add a selectbox for Response Variable based on dataframe columns
-                response_var = st.selectbox(
-                    "Response Variable",
-                    options=df.columns.tolist(),  # Use column names from the dataframe
-                    help="Select the response variable for analysis"
-                )
+response_var = st.selectbox("Response Variable",options=df.columns.tolist(), help="Select the response variable for analysis")
