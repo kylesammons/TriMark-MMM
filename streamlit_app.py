@@ -94,9 +94,7 @@ if data_files:
                     st.error("No columns found in the uploaded file.")
                     st.stop()
 
-                # Remove the temporary file after it is fully processed
-                if os.path.exists(temp_file_name):
-                    os.remove(temp_file_name)
+                submitted = st.form_submit_button("Submit")
                 
         except Exception as e:
             st.error(f"Error adding `{file_name}` to model: {e}")
