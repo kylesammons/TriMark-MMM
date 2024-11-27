@@ -11,9 +11,6 @@ st.title(":male_mage: TriMark MMM")
 with st.sidebar:
     budget = st.text_input("Selected Timeframe Budget")
 
-    if st.session_state.api_key:
-        app = get_ec_app(st.session_state.api_key)
-
     pdf_files = st.file_uploader("Upload your PDF files", accept_multiple_files=True, type="pdf")
     add_pdf_files = st.session_state.get("add_pdf_files", [])
     for pdf_file in pdf_files:
