@@ -4,15 +4,23 @@ import streamlit as st
 import tempfile
 
 # Set Streamlit page config
-st.set_page_config(page_title="The Reef", page_icon=":male_mage:")
+st.set_page_config(page_title="TriMark MMM", page_icon=":male_mage:")
 
 # App title
 st.title(":male_mage: TriMark MMM")
 
 with st.sidebar:
+    # Timeframe selector
+    timeframe = st.date_input(
+        "Select Timeframe",
+        help="Choose a date range for the analysis (start and end dates)",
+    )
+    
+    # Budget input
     budget = st.text_input("Selected Timeframe Budget")
     "Enter budget (e.g., 200000)"
 
+    # File uploader for CSV and XLSX
     data_files = st.file_uploader("Upload your data files", accept_multiple_files=True, type=["csv", "xlsx"])
     add_data_files = st.session_state.get("add_data_files", [])
     for data_file in data_files:
