@@ -118,17 +118,17 @@ if data_files:
                 # Submit button for the form
                 submit_button = st.form_submit_button(label="Run Model")
 
-            # Handling form submission and session state
+            # Handle form submission
             if submit_button and not st.session_state["submitted"]:
-                st.session_state["submitted"] = True
-                st.session_state["response_variable"] = response_var
-                
+                st.session_state["submitted"] = True  # Track form submission state
+
                 with st.spinner("Training the MMM model..."):
                     # Simulate model training (replace with actual model logic)
+                    st.session_state["response_variable"] = response_var
                     st.session_state["model_trained"] = True
                     st.success(f"Model trained with `{response_var}` as the response variable!")
 
-                st.session_state["submitted"] = False
+                st.session_state["submitted"] = False  # Reset form submission state after completion
 
 # After form submission, show the trained model info if available
 if st.session_state.get("model_trained", False):
