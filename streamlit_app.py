@@ -165,9 +165,9 @@ if not st.session_state["df"].empty:
                     st.error(f"Error plotting model fit: {e}")
                     st.stop()
 
-            except Exception as e:
-                st.error(f"Error running MMM: {e}")
-                st.stop()
+        except Exception as e:
+            st.error(f"Error running MMM: {e}")
+            st.stop()
 
         
 
