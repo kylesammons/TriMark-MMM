@@ -12,34 +12,35 @@ st.title(":male_mage: TriMark MMM")
 # Sidebar for inputs
 with st.sidebar:
     st.title("Select Timeframe")
-    # Start Date Timeframe selector
     startdate = st.date_input(
         "Start Date",
         help="Choose a start date for the date range that you want media mix predictions/recommendations for",
     )
-
-    # End Date Timeframe selector
     enddate = st.date_input(
         "End Date",
         help="Choose an end date for the date range that you want media mix predictions/recommendations for",
     )
 
     st.title("Input Budget")
-    # Budget input
     budget = st.text_input(
         "Total Budget",
         help="Input total planned budget for all channels included in your data file for the selected time frame",
     )
     
     st.title("Load Data")
-    # File uploader for CSV and XLSX
     data_files = st.file_uploader(
         "Upload your data files", accept_multiple_files=True, type=["csv", "xlsx"]
     )
 
-# Initialize session state for tracking files
+# Initialize session state for tracking files and variables
 if "add_data_files" not in st.session_state:
     st.session_state["add_data_files"] = []
+
+if "df" not in st.session_state:
+    st.session_state["df"] = None
+
+if "response_variable" not in st.session_state:
+    st.session_state["response_variable"] = None
 
 # Display results in the main area
 if data_files:
@@ -69,6 +70,9 @@ if data_files:
                 if df.empty:
                     st.error("Uploaded file is empty. Please upload a valid file.")
                     st.stop()
+
+                # Store dataframe in session state
+                st.session_state["df"] = df
 
                 # Show the first few rows of the uploaded file
                 st.dataframe(df.head(50), height=400)
