@@ -32,7 +32,7 @@ with st.sidebar:
         "Upload your data files", accept_multiple_files=True, type=["csv", "xlsx"]
     )
 
-# Initialize session state for tracking files and variables
+# Initialize session state for tracking files, data, and training
 if "add_data_files" not in st.session_state:
     st.session_state["add_data_files"] = []
 
@@ -45,7 +45,11 @@ if "response_variable" not in st.session_state:
 if "model_trained" not in st.session_state:
     st.session_state["model_trained"] = False
 
-# Function to load and process the file
+if "submitted" not in st.session_state:
+    st.session_state["submitted"] = False
+
+
+# Function to process the uploaded file
 def process_file(data_file):
     file_name = data_file.name
     if file_name in st.session_state["add_data_files"]:
@@ -83,7 +87,7 @@ def process_file(data_file):
         st.error(f"Error adding `{file_name}` to model: {e}")
         return None
 
-# Display results in the main area
+# Main workflow
 if data_files:
     for data_file in data_files:
         df = process_file(data_file)
@@ -114,18 +118,18 @@ if data_files:
                 # Submit button for the form
                 submit_button = st.form_submit_button(label="Run Model")
 
-            # Store the selected response variable if the form is submitted
-            if submit_button and not st.session_state.model_trained:
+            # Handling form submission and session state
+            if submit_button and not st.session_state["submitted"]:
+                st.session_state["submitted"] = True
+                st.session_state["response_variable"] = response_var
+                
                 with st.spinner("Training the MMM model..."):
                     # Simulate model training (replace with actual model logic)
-                    st.session_state["response_variable"] = response_var
                     st.session_state["model_trained"] = True
                     st.success(f"Model trained with `{response_var}` as the response variable!")
-                    
-        else:
-            st.error("No columns found in the uploaded file.")
-            st.stop()
 
-# If the model is already trained, show a message and results
-if st.session_state.model_trained:
+                st.session_state["submitted"] = False
+
+# After form submission, show the trained model info if available
+if st.session_state.get("model_trained", False):
     st.success("Model has already been trained. You can view or analyze the results here.")
