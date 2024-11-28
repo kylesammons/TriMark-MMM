@@ -81,32 +81,32 @@ if data_files:
                     # Display success message first
                     st.success(f"Added {file_name} to model!")
 
-                    # Create a form for the Response Variable selection
-                    with st.form(key="response_var_form"):
-                        response_var = st.selectbox(
-                            "Response Variable",
-                            options=df.columns.tolist(),  # Use column names from the dataframe
-                            help="Select the response variable for analysis"
+# Create a form for the Response Variable selection
+    with st.form(key="response_var_form"):
+        response_var = st.selectbox(
+            "Response Variable",
+            options=df.columns.tolist(),  # Use column names from the dataframe
+            help="Select the response variable for analysis"
                         )
                     
-                        model_type = st.selectbox(
-                            "Model Type",
-                            options=["Carryover", "Adstock", "Hill Adstock"],
-                            help="Select the type of model for media mix analysis"
+        model_type = st.selectbox(
+             "Model Type",
+            options=["Carryover", "Adstock", "Hill Adstock"],
+            help="Select the type of model for media mix analysis"
                         )
 
-                        # Submit button for the form
-                        submit_button = st.form_submit_button(label="Run Model")
+        # Submit button for the form
+        submit_button = st.form_submit_button(label="Run Model")
 
-                    # Store the selected response variable if the form is submitted
-                    if submit_button:
-                          with  st.spinner("Training the MMM model..."):
-                            st.session_state["response_variable"] = response_var
-                            st.success(f"Response variable {response_var} selected!")
+    # Store the selected response variable if the form is submitted
+    if submit_button:
+            with  st.spinner("Training the MMM model..."):
+            st.session_state["response_variable"] = response_var
+            st.success(f"Response variable {response_var} selected!")
 
-                else:
-                    st.error("No columns found in the uploaded file.")
-                    st.stop()
+else:
+    st.error("No columns found in the uploaded file.")
+    st.stop()
                 
         except Exception as e:
             st.error(f"Error adding {file_name} to model: {e}")
