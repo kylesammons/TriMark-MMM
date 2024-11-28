@@ -2,8 +2,6 @@ import os
 import pandas as pd
 import streamlit as st
 import tempfile
-import time
-import seaborn as sns
 
 # Set Streamlit page config
 st.set_page_config(page_title="TriMark MMM", page_icon=":male_mage:")
@@ -97,39 +95,14 @@ if data_files:
             if submit_button and not st.session_state["submitted"]:
                 st.session_state["submitted"] = True  # Mark form as submitted
 
-                # Show spinner while simulating model training
                 with st.spinner("Training the MMM model..."):
-                    time.sleep(2)  # Simulating a time delay for model training
-                    # Simulate model training logic
+                    # Simulate model training (replace with actual model logic)
                     st.session_state["response_variable"] = response_var
                     st.session_state["model_trained"] = True
-
                     st.success(f"Model trained with `{response_var}` as the response variable!")
 
                 st.session_state["submitted"] = False  # Reset form submission state
 
-# After form submission, show the trained model info and the dashboard if available
+# After form submission, show the trained model info if available
 if st.session_state.get("model_trained", False):
-    st.success("Model has been trained. Below is the dashboard with the model results.")
-
-    # Simple dashboard displaying simulated results
-    fig, ax = plt.subplots(figsize=(10, 6))
-    sns.barplot(x=['TV', 'Radio', 'Online', 'Social'], y=[100, 80, 120, 90], ax=ax)  # Replace with model results
-    ax.set_title('Media Spend Allocation')
-    ax.set_ylabel('Budget Allocation')
-    ax.set_xlabel('Channels')
-    st.pyplot(fig)
-
-    # Display some other model results (could be coefficients or insights)
-    st.write("### Model Coefficients:")
-    st.write({
-        'TV': 0.45,
-        'Radio': 0.30,
-        'Online': 0.15,
-        'Social': 0.10,
-    })
-
-    st.write("### Additional Insights:")
-    st.write("The model predicts that TV spend has the highest effect on the response variable, followed by online marketing.")
-
-    # You can add more visualizations or insights here based on your model results
+    st.success("Model has already been trained. You can view or analyze the results here.")
