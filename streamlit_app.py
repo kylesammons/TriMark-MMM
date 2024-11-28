@@ -80,6 +80,10 @@ if data_files:
                 if df.columns.size > 0:
                     # Display success message first
                     st.success(f"Added {file_name} to model!")
+                    
+        except Exception as e:
+            st.error(f"Error adding {file_name} to model: {e}")
+            st.stop()
 
 # Create a form for the Response Variable selection
     with st.form(key="response_var_form"):
@@ -108,6 +112,4 @@ else:
     st.error("No columns found in the uploaded file.")
     st.stop()
                 
-        except Exception as e:
-            st.error(f"Error adding {file_name} to model: {e}")
-            st.stop()
+        
