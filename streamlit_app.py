@@ -109,5 +109,5 @@ if data_files:
             st.stop()
 
 else:
-    st.error("No columns found in the uploaded file.")
+    st.error("Uploaded file is empty. Please upload a valid file.")
     st.stop()
