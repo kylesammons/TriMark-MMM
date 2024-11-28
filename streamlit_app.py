@@ -102,8 +102,8 @@ if data_files:
                     if submit_button:
                         try:
                           with  st.spinner("Training the MMM model..."):
-                        st.session_state["response_variable"] = response_var
-                        st.success(f"Response variable `{response_var}` selected!")
+                            st.session_state["response_variable"] = response_var
+                            st.success(f"Response variable `{response_var}` selected!")
 
                 else:
                     st.error("No columns found in the uploaded file.")
