@@ -1,20 +1,3 @@
-import os
-import pandas as pd
-import streamlit as st
-import tempfile
-from lightweight_mmm import lightweight_mmm, optimize_media, plot, preprocessing
-from datetime import datetime
-import time
-import numpy as np
-import plotly.express as px
-import plotly.graph_objects as go
-from matplotlib import pyplot as plt
-import plotly.tools as tls
-import seaborn as sns
-import plotly.graph_objects as go
-from streamlit_extras.metric_cards import style_metric_cards
-import matplotlib.ticker as ticker
-
 # Set Seaborn style for consistency
 sns.set_theme(style="whitegrid", palette="muted")
 
