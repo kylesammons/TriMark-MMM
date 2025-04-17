@@ -2,7 +2,6 @@ import os
 import pandas as pd
 import streamlit as st
 import tempfile
-import jax.numpy as jnp
 from lightweight_mmm import lightweight_mmm, optimize_media, plot, preprocessing
 from datetime import datetime
 import time
@@ -183,10 +182,10 @@ if "df" in st.session_state and not st.session_state["df"].empty:
             extra_features_train = extra_features[:split_point, ...]  # Training data for extra features
 
             # Scale/Preprocess Data
-            media_scaler = preprocessing.CustomScaler(divide_operation=jnp.mean)
-            target_scaler = preprocessing.CustomScaler(divide_operation=jnp.mean)
-            cost_scaler = preprocessing.CustomScaler(divide_operation=jnp.mean)
-            extra_scaler = preprocessing.CustomScaler(divide_operation=jnp.mean)
+            media_scaler = preprocessing.CustomScaler(divide_operation=.mean)
+            target_scaler = preprocessing.CustomScaler(divide_operation=.mean)
+            cost_scaler = preprocessing.CustomScaler(divide_operation=.mean)
+            extra_scaler = preprocessing.CustomScaler(divide_operation=.mean)
 
             media_data_train = media_scaler.fit_transform(media_data_train)
             target_train = target_scaler.fit_transform(target_train)
