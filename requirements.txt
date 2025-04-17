@@ -1,4 +1,4 @@
-streamlit==1.32.2
+streamlit
 lightweight-mmm[extra]==0.6.0
 jax[cpu]==0.4.20
 jaxlib==0.4.20
