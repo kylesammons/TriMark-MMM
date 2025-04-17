@@ -1,5 +1,5 @@
 streamlit
-lightweight-mmm
+lightweight-mmm[extra]
 jax[cpu]==0.4.20
 jaxlib==0.4.20
 pandas
@@ -8,3 +8,4 @@ plotly
 matplotlib
 seaborn
 streamlit-extras
+
