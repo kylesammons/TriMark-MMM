@@ -1,5 +1,5 @@
 streamlit
-lightweight-mmm[extra]
+lightweight-mmm==0.1.9
 jax[cpu]==0.4.25
 jaxlib==0.4.25
 pandas
