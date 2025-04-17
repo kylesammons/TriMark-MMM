@@ -2,6 +2,7 @@ streamlit
 lightweight-mmm==0.1.9
 jax[cpu]==0.4.25
 jaxlib==0.4.25
+ml_dtypes==0.2.0
 pandas
 numpy
 plotly
