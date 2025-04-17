@@ -1,7 +1,8 @@
+--find-links https://storage.googleapis.com/jax-releases/jax_releases.html
+jax==0.4.13
+jaxlib==0.4.13
 streamlit
 lightweight-mmm==0.1.9
-jax[cpu]==0.4.13
-jaxlib==0.4.13
 pandas
 numpy
 plotly
