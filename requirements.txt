@@ -1,7 +1,7 @@
 streamlit
-lightweight-mmm
-jax[cpu]==0.4.20
-jaxlib==0.4.20
+lightweight-mmm[extra]
+jax[cpu]==0.4.25
+jaxlib==0.4.25
 pandas
 numpy
 plotly
