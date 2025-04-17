@@ -1,5 +1,5 @@
 streamlit
-lightweight-mmm[extra]
+lightweight-mmm
 pandas
 numpy
 plotly
