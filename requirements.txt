@@ -1,2 +1,8 @@
 streamlit
-pip install lightweight-mmm
+lightweight-mmm[extra]
+pandas
+numpy
+plotly
+matplotlib
+seaborn
+streamlit-extras
